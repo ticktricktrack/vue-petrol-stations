@@ -1,13 +1,15 @@
 import Vue from 'vue';
-import App from './App.vue';
+import VueResource from 'vue-resource';
 
+import App from './App.vue';
 import store from './store/store';
 
-const mapBus = new Vue();
+Vue.use(VueResource);
+
+import _ from 'lodash'
 
 new Vue({
   el: '#app',
   store,
-  mapBus,
   render: h => h(App)
 })

@@ -34,6 +34,7 @@
           id: 'mapbox.streets',
           accessToken: 'pk.eyJ1IjoidGlja3RyaWNrdHJhY2siLCJhIjoiY2l3d2swZzBtMDAzaDJwanRmOTdlazl4ZiJ9.2VmjgLWfKQIdAWNNKenQag'
         }).addTo(this.mymap);
+        L.marker([this.selected.lat, this.selected.lng]).addTo(this.mymap);
       }
     }
   }

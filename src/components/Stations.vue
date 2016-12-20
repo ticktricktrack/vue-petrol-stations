@@ -1,6 +1,6 @@
 <template lang="html">
-  <div>
-    <app-station v-for="station in stations" :station="station"></app-station>
+  <div class="horizontal-scroll">
+      <app-station v-for="station in stations" :station="station"></app-station>
   </div>
 </template>
 
@@ -15,9 +15,20 @@ export default {
     stations() {
       return this.$store.getters.stations;
     }
+  },
+  created() {
+    this.$store.dispatch('currentLocation')
+    // .then(() => {
+    //   this.$store.dispatch('loadStations');
+    // });
   }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+  .horizontal-scroll {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
 </style>

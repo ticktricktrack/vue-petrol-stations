@@ -6,26 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     selected: null,
-    stations: [
-      {
-        name: "Tanke 1",
-        price: "1.23",
-        lat: 49.6,
-        lng: 6.7
-      },
-      {
-        name: "Tanke 2",
-        price: "1.10",
-        lat: 49.5,
-        lng: 7
-      },
-      {
-        name: "Tanke 3",
-        price: "1.40",
-        lat: 49.999,
-        lng: 6.93
-      }
-    ]
+    coords: {
+      lat: null,
+      long: null
+    },
+    stations: []
   },
 
   getters: {
@@ -35,12 +20,23 @@ export default new Vuex.Store({
 
     selected: state => {
       return state.selected;
+    },
+    coords: state => {
+      return state.coords;
     }
   },
 
   mutations: {
     select: (state, station) => {
       state.selected = station;
+    },
+    loadStations: (state, stations) => {
+      console.log('loaded', stations);
+      state.stations = stations;
+    },
+    coords: (state, location) => {
+      state.location = location;
+      console.log('setting coords', location);
     }
   },
 
@@ -49,8 +45,39 @@ export default new Vuex.Store({
       commit('select', station);
     },
 
-    loadStations() {
+    loadStations({getters, commit}, {lat, lng}) {
+      const x = null;
+      // console.log('coords from action', getters.coords.lat, getters.coords.lng);
+      console.log('coords from action', lat, lng);
 
+      Vue.http.get(
+        // `https://creativecommons.tankerkoenig.de/json/list.php?lat=${getters.coords.lat}&lng=${getters.coords.lng}&rad=4&sort=price&type=diesel&apikey=45caee49-4410-1536-20ee-509b9fc223e7`,
+        `https://creativecommons.tankerkoenig.de/json/list.php?lat=${lat}&lng=${lng}&rad=4&sort=price&type=diesel&apikey=45caee49-4410-1536-20ee-509b9fc223e7`,
+      )
+      .then(response => response.json())
+      .then(data => {
+        const stations = _.map(data.stations, station => {
+           return {
+            name: station.name,
+            price: station.price,
+            lat: station.lat,
+            lng: station.lng
+          }
+        })
+        commit("loadStations", stations);
+      })
+    },
+
+    currentLocation({ commit, dispatch }) {
+      console.log('fetching location');
+      navigator.geolocation.getCurrentPosition(position => {
+        const coords = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+        commit("coords", coords);
+        dispatch("loadStations", coords);
+      });
     }
   }
 });

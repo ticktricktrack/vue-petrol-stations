@@ -38,5 +38,6 @@
 <style lang="css" scoped>
   .card {
     margin-bottom: 20px;
+    min-width: 300px;
   }
 </style>
