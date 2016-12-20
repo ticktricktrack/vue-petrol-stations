@@ -10,10 +10,8 @@
         <div class="title">
           {{ station.name }}
         </div>
-        <div class="subtitle">
-          <p class="content is-bold">{{ station.price }}</p>
-        </div>
       </div>
+      <p class="price content is-large is-info is-pulled-right">{{ euroPrice }}</p>
     </div>
   </div>
 </template>
@@ -23,6 +21,11 @@
 
   export default {
     props: ["station"],
+    computed: {
+      euroPrice() {
+        return this.station.price.toString().replace('.', ',') + '€';
+      }
+    },
     methods: {
       ...mapActions(['select']),
       unsplashURL() {
@@ -39,5 +42,13 @@
   .card {
     margin-bottom: 20px;
     min-width: 300px;
+
+  }
+
+  .price {
+    position: absolute;;
+    bottom: 5px;
+    right: 5px;
+    color: #42afe3;
   }
 </style>
