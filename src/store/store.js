@@ -62,6 +62,15 @@ export default new Vuex.Store({
     },
 
     currentLocation({ commit, dispatch }) {
+      Vue.http.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyB0ZPdrd_zcZKXJjM0oTXsJlCM1UI-A4Cs')
+      .then(response => response.json())
+      .then(data => {
+        commit("coords", data.location);
+        dispatch("loadStations", data.location);
+      });
+    },
+
+    currentLocationFromBrowser({ commit, dispatch }) {
       navigator.geolocation.getCurrentPosition(position => {
         const coords = {
           lat: position.coords.latitude,
