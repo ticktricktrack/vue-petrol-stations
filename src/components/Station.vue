@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="card">
+  <div @click="showMap" class="card">
     <div class="card-image">
       <figure class="image is-4by3">
         <img :src="unsplashURL()">
@@ -19,11 +19,17 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
+
   export default {
     props: ["station"],
     methods: {
+      ...mapActions(['select']),
       unsplashURL() {
         return "https://source.unsplash.com/collection/329542/300x225?sig=" + Math.floor(Math.random() * 1000);
+      },
+      showMap() {
+        this.select(this.station);
       }
     }
   }
