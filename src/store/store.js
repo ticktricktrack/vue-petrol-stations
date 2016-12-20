@@ -31,12 +31,10 @@ export default new Vuex.Store({
       state.selected = station;
     },
     loadStations: (state, stations) => {
-      console.log('loaded', stations);
       state.stations = stations;
     },
     coords: (state, location) => {
       state.location = location;
-      console.log('setting coords', location);
     }
   },
 
@@ -46,12 +44,7 @@ export default new Vuex.Store({
     },
 
     loadStations({getters, commit}, {lat, lng}) {
-      const x = null;
-      // console.log('coords from action', getters.coords.lat, getters.coords.lng);
-      console.log('coords from action', lat, lng);
-
       Vue.http.get(
-        // `https://creativecommons.tankerkoenig.de/json/list.php?lat=${getters.coords.lat}&lng=${getters.coords.lng}&rad=4&sort=price&type=diesel&apikey=45caee49-4410-1536-20ee-509b9fc223e7`,
         `https://creativecommons.tankerkoenig.de/json/list.php?lat=${lat}&lng=${lng}&rad=4&sort=price&type=diesel&apikey=45caee49-4410-1536-20ee-509b9fc223e7`,
       )
       .then(response => response.json())
@@ -69,7 +62,6 @@ export default new Vuex.Store({
     },
 
     currentLocation({ commit, dispatch }) {
-      console.log('fetching location');
       navigator.geolocation.getCurrentPosition(position => {
         const coords = {
           lat: position.coords.latitude,

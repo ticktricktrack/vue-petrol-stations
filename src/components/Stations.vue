@@ -18,9 +18,6 @@ export default {
   },
   created() {
     this.$store.dispatch('currentLocation')
-    // .then(() => {
-    //   this.$store.dispatch('loadStations');
-    // });
   }
 }
 </script>
