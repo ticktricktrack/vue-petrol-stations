@@ -10,20 +10,20 @@ export default new Vuex.Store({
       {
         name: "Tanke 1",
         price: "1.23",
-        lat: 50,
-        lng: 10
+        lat: 49.6,
+        lng: 6.7
       },
       {
         name: "Tanke 2",
         price: "1.10",
-        lat: 51,
-        lng: 13
+        lat: 49.5,
+        lng: 7
       },
       {
         name: "Tanke 3",
         price: "1.40",
-        lat: 49,
-        lng: 11
+        lat: 49.999,
+        lng: 6.93
       }
     ]
   },
@@ -47,6 +47,10 @@ export default new Vuex.Store({
   actions: {
     select: ({commit}, station) => {
       commit('select', station);
+    },
+
+    loadStations() {
+
     }
   }
 });

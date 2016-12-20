@@ -27,7 +27,7 @@
     methods: {
       updateMap() {
         if (this.mymap) { this.mymap.remove();}
-        this.mymap = L.map('mymap').setView([this.selected.lat, this.selected.lng], 13);
+        this.mymap = L.map('mymap').setView([this.selected.lat, this.selected.lng], 15);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           maxZoom: 18,
