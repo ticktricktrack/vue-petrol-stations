@@ -7,6 +7,7 @@
     <div class="container">
       <app-map></app-map>
     </div>
+    <p class="content is-small is-pulled-right">version 0.4</p>
   </div>
 </template>
 
