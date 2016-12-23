@@ -97,7 +97,7 @@ export default new Vuex.Store({
           lng: position.coords.longitude
         }
         commit("coords", coords);
-        dispatch("loadStations", coords);
+        dispatch("checkCountry", coords);
       });
     }
   }

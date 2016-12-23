@@ -17,7 +17,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('currentLocation')
+    this.$store.dispatch('currentLocationFromBrowser')
   }
 }
 </script>
