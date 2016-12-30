@@ -15,9 +15,6 @@ export default {
     stations() {
       return this.$store.getters.stations;
     }
-  },
-  created() {
-    this.$store.dispatch('currentLocationFromBrowser')
   }
 }
 </script>

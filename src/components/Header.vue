@@ -1,20 +1,14 @@
 <template lang="html">
   <div class="hero is-small is-info">
     <div class="hero-body">
-      <nav class="nav">
-        <div class="nav-left">
-          <a class="nav-item is-brand content is-large" href="#">
-            Billigste Tanke
-          </a>
-        </div>
-      </nav>
+      <h1 class="title">Wo ist die billigste Tanke?</h1>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-  
+
   }
 </script>
 
