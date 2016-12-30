@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="full-height-container">
     <app-header></app-header>
     <!-- <app-search></app-search> -->
     <app-start></app-start>
@@ -7,10 +7,10 @@
     <div class="container">
       <app-stations></app-stations>
     </div>
-    <div class="container">
+    <div class="container fill-all">
       <app-map></app-map>
     </div>
-    <p class="content is-small is-pulled-right">version 0.5</p>
+    <p class="content is-small is-pulled-right">version 0.6</p>
   </div>
 </template>
 
@@ -39,8 +39,15 @@ export default {
     padding: 30px;
   }
 
-  #mappy {
-    height: 180px;
+  .full-height-container {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
   }
 
+  .fill-all {
+    height: 100%;
+    flex-grow: 1;
+    width: 100%;
+  }
 </style>

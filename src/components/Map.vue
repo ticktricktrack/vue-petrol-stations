@@ -41,7 +41,11 @@
 </script>
 
 <style lang="css" scoped>
+  .box {
+    height: 100%;
+  }
+
   #mymap {
-    height: 400px;
+    height: 100%;
   }
 </style>
