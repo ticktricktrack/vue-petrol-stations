@@ -1,16 +1,18 @@
 <template>
-  <div class="full-height-container">
-    <app-header></app-header>
-    <!-- <app-search></app-search> -->
-    <app-start></app-start>
-    <app-loading></app-loading>
-    <div class="container">
-      <app-stations></app-stations>
+  <div class="columns full-height-container">
+    <div class="column">
+      <app-header></app-header>
+      <!-- <app-search></app-search> -->
+      <app-start></app-start>
+      <app-loading></app-loading>
+      <div class="container">
+        <app-stations></app-stations>
+      </div>
+      <div class="container fill-all">
+        <app-map></app-map>
+      </div>
+      <p class="content is-small is-pulled-right">version 0.6</p>
     </div>
-    <div class="container fill-all">
-      <app-map></app-map>
-    </div>
-    <p class="content is-small is-pulled-right">version 0.6</p>
   </div>
 </template>
 
@@ -41,8 +43,6 @@ export default {
 
   .full-height-container {
     height: 100vh;
-    display: flex;
-    flex-flow: column;
   }
 
   .fill-all {
