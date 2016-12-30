@@ -10,9 +10,12 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
   export default {
     methods: {
+      ...mapActions(['showSpinner']),
       fetchLocation() {
+        this.showSpinner();
         this.$store.dispatch('currentLocationFromBrowser');
       }
     }

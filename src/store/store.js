@@ -14,7 +14,8 @@ export default new Vuex.Store({
       lat: null,
       long: null
     },
-    stations: []
+    stations: [],
+    spinner: false
   },
 
   getters: {
@@ -25,8 +26,13 @@ export default new Vuex.Store({
     selected: state => {
       return state.selected;
     },
+
     coords: state => {
       return state.coords;
+    },
+
+    spinner: state => {
+      return state.spinner;
     }
   },
 
@@ -39,6 +45,9 @@ export default new Vuex.Store({
     },
     coords: (state, location) => {
       state.location = location;
+    },
+    toggleSpinner: (state, spinner) => {
+      state.spinner = spinner;
     }
   },
 
@@ -47,7 +56,15 @@ export default new Vuex.Store({
       commit('select', station);
     },
 
-    loadStations({getters, commit}, {lat, lng}) {
+    showSpinner({commit}) {
+      commit("toggleSpinner", true);
+    },
+
+    hideSpinner({commit}) {
+      commit("toggleSpinner", false);
+    },
+
+    loadStations({getters, commit, dispatch}, {lat, lng}) {
       Vue.http.get(
         `https://creativecommons.tankerkoenig.de/json/list.php?lat=${lat}&lng=${lng}&rad=4&sort=price&type=diesel&apikey=${TANKER}`,
       )
@@ -62,6 +79,7 @@ export default new Vuex.Store({
           }
         })
         commit("loadStations", stations);
+        dispatch("hideSpinner");
       })
     },
 

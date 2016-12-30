@@ -3,6 +3,7 @@
     <app-header></app-header>
     <!-- <app-search></app-search> -->
     <app-start></app-start>
+    <app-loading></app-loading>
     <div class="container">
       <app-stations></app-stations>
     </div>
@@ -16,6 +17,7 @@
 <script>
 import Header from './components/Header.vue';
 import Start from './components/Start.vue';
+import Loading from './components/Loading.vue';
 import Search from './components/Search.vue';
 import Stations from './components/Stations.vue';
 import Map from './components/Map.vue';
@@ -24,9 +26,10 @@ export default {
   components: {
     appHeader: Header,
     appStart: Start,
+    appLoading: Loading,
     appStations: Stations,
     appSearch: Search,
-    appMap: Map
+    appMap: Map,
   }
 }
 </script>
