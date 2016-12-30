@@ -1,7 +1,5 @@
 <template lang="html">
-  <div class="box">
-    <div id="mymap"></div>
-  </div>
+  <div id="mymap"></div>
 </template>
 
 <script>
@@ -41,11 +39,9 @@
 </script>
 
 <style lang="css" scoped>
-  .box {
-    height: 100%;
-  }
-
   #mymap {
-    height: 100%;
+    border: 20px solid white;
+    flex-grow: 1;
+    width: 100%;
   }
 </style>
